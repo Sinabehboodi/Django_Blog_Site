@@ -1,0 +1,46 @@
+{% extends '_base.html' %}
+
+{% block page_title %}
+    Post List
+{% endblock page_title %}
+
+{% block content %}
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-9">
+                {% for posts in posts_list %}
+                    <div class="card shadow-sm my-3">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ posts.title }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted small py-2">by: {{ posts.author }}</h6>
+                            <p class="card-text py-3">
+                                {{ posts.text }}
+                            </p>
+                            <a href="{% url 'post_detail' posts.id %}" class="btn btn-primary">Read More</a>
+                            <a href="{% url 'post_update' posts.id %}" class="btn btn-warning">Edit</a>
+                            <a href="{% url 'post_delete' posts.id %}" class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+            <div class="col-3">
+
+                <div class="card my-4">
+                    <h5 class="card-header">About</h5>
+                    <div class="card-body">
+                        <p class="card-text">We love python and django. So we created a blog site to share our
+                            thoughts</p>
+                        <a href="#"
+                           class="btn btn-outline-primary">
+                            More...
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
